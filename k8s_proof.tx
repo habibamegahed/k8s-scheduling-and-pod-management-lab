@@ -1,0 +1,16 @@
+admin-55c45cb656-td4xw	BestEffort
+affinity-demo	BestEffort
+api-7965d5f7fb-xn2qs	BestEffort
+besteffort-pod	BestEffort
+burstable-pod	Burstable
+demo-7fb87548c-9khzh	BestEffort
+demo-7fb87548c-dtxdt	BestEffort
+frontend-rs-9l6hq	BestEffort
+frontend-rs-lh9sz	BestEffort
+frontend-rs-t6sx2	BestEffort
+guaranteed-pod	Guaranteed
+pending-selector	BestEffort
+web-0	BestEffort
+web-1	BestEffort
+web-2	BestEffort
+webapp-7f5c57d764-2frj6	BestEffort

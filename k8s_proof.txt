@@ -1,0 +1,95 @@
+
+--- Task 2: NodeSelector & Pending Status ---
+NAME            READY   STATUS    RESTARTS   AGE     IP             NODE       NOMINATED NODE   READINESS GATES
+selector-demo   1/1     Running   0          4m56s   10.244.2.143   minikube   <none>           <none>
+NAME               READY   STATUS    RESTARTS   AGE
+pending-selector   0/1     Pending   0          2m10s
+
+--- Task 3: NoExecute Eviction Proof ---
+Error from server (NotFound): pods "evict-me" not found
+
+--- Task 4: Node Affinity Verification ---
+NAME            READY   STATUS    RESTARTS   AGE   IP             NODE       NOMINATED NODE   READINESS GATES
+affinity-demo   1/1     Running   0          50s   10.244.2.180   minikube   <none>           <none>
+Name:             affinity-demo
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Tue, 31 Mar 2026 18:58:37 +0200
+Labels:           <none>
+Annotations:      <none>
+Status:           Running
+IP:               10.244.2.180
+IPs:
+  IP:  10.244.2.180
+Containers:
+  nginx:
+    Container ID:   docker://b3dc19d13c20f92a09e51a870e35ccff9ead81f8cfca01eb8ba9c636486ffc04
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:7150b3a39203cb5bee612ff4a9d18774f8c7caf6399d6e8985e97e28eb751c18
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Tue, 31 Mar 2026 18:58:39 +0200
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-zv6vj (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-zv6vj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  60s   default-scheduler  Successfully assigned default/affinity-demo to minikube
+  Normal  Pulling    60s   kubelet            spec.containers{nginx}: Pulling image "nginx"
+  Normal  Pulled     58s   kubelet            spec.containers{nginx}: Successfully pulled image "nginx" in 1.741s (1.741s including waiting). Image size: 160931444 bytes.
+  Normal  Created    58s   kubelet            spec.containers{nginx}: Created container: nginx
+  Normal  Started    58s   kubelet            spec.containers{nginx}: Started container nginx
+
+--- Task 5: QoS Classes Verification ---
+
+--- Task 5: QoS Classes Verification ---
+admin-55c45cb656-td4xw	BestEffort
+affinity-demo	BestEffort
+api-7965d5f7fb-xn2qs	BestEffort
+besteffort-pod	BestEffort
+burstable-pod	Burstable
+demo-7fb87548c-9khzh	BestEffort
+demo-7fb87548c-dtxdt	BestEffort
+frontend-rs-9l6hq	BestEffort
+frontend-rs-lh9sz	BestEffort
+frontend-rs-t6sx2	BestEffort
+guaranteed-pod	Guaranteed
+pending-selector	BestEffort
+web-0	BestEffort
+web-1	BestEffort
+web-2	BestEffort
+webapp-7f5c57d764-2frj6	BestEffort
+
+--- Task 6: DaemonSet Verification ---
+NAME           DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+node-monitor   1         1         1       1            1           <none>          2m31s
+node-monitor-wnw6g        1/1     Running   0          2m41s   10.244.2.184   minikube   <none>           <none>
+NAME         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-proxy   1         1         1       1            1           kubernetes.io/os=linux   28d
+
+--- Task 7: Static Pod Proof ---
+Error from server (NotFound): pods "static-nginx-minikube" not found
